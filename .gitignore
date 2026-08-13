@@ -1,0 +1,16 @@
+.vercel
+.env
+.env.*
+!.env.example
+.pytest_cache/
+**/__pycache__/
+*.py[cod]
+frontend/.next/
+frontend/node_modules/
+node_modules/
+*.log
+coverage/
+test-results/
+playwright-report/
+backend/.venv/
+.venv/

@@ -1,0 +1,12 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { Product } from "./catalog";
+import ProductCard from "./ProductCard";
+
+export default function ProductFilters({ products, initialCategory = "All" }: { products: Product[]; initialCategory?: string }) {
+  const [query, setQuery] = useState(""); const [category, setCategory] = useState(initialCategory); const [color, setColor] = useState("All"); const [sort, setSort] = useState("Featured");
+  const shown = useMemo(() => products.filter(p => (category === "All" || p.category === category) && (color === "All" || p.color === color) && `${p.name} ${p.category} ${p.occasion}`.toLowerCase().includes(query.toLowerCase())).sort((a, b) => sort === "Price: low to high" ? a.price - b.price : sort === "Price: high to low" ? b.price - a.price : b.rating - a.rating).slice(0, category === "All" ? undefined : 5), [products, query, category, color, sort]);
+  const select = "rounded-full border border-stone-200 bg-white px-3 py-2 text-sm outline-none focus:border-stone-600";
+  return <><div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-[1.3fr_.7fr_.7fr_.8fr]"><label className="relative"><span className="sr-only">Search products</span><input value={query} onChange={e => setQuery(e.target.value)} className="w-full rounded-full border border-stone-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-stone-600" placeholder="Search pieces, occasions and materials" /></label><select aria-label="Filter by category" value={category} onChange={e => setCategory(e.target.value)} className={select}><option>All</option>{[...new Set(products.map(p => p.category))].map(x => <option key={x}>{x}</option>)}</select><select aria-label="Filter by color" value={color} onChange={e => setColor(e.target.value)} className={select}><option>All</option>{[...new Set(products.map(p => p.color))].map(x => <option key={x}>{x}</option>)}</select><select aria-label="Sort products" value={sort} onChange={e => setSort(e.target.value)} className={select}><option>Featured</option><option>Price: low to high</option><option>Price: high to low</option></select></div><p className="mt-7 text-sm text-stone-500">{shown.length} considered pieces</p><div className="mt-6 grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">{shown.map(product => <ProductCard key={product.id} product={product} />)}</div>{shown.length === 0 && <p className="py-20 text-center text-stone-500">No pieces match those filters. Try a different combination.</p>}</>;
+}

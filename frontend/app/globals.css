@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+:root { --ink: #0b1020; --muted: #667085; --violet: #6956e8; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #f8f8fc; color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+button, input, select { font: inherit; }
+:focus-visible { outline: 3px solid #5b21b6; outline-offset: 3px; }
+
+.page-background {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(205, 194, 255, .72), transparent 31rem),
+    radial-gradient(circle at 94% 32%, rgba(190, 225, 255, .65), transparent 28rem),
+    linear-gradient(145deg, #fbfbff 0%, #f4f1ff 48%, #f6fbff 100%);
+}
+.glass { background: rgba(255,255,255,.67); border: 1px solid rgba(255,255,255,.85); box-shadow: 0 20px 60px rgba(49, 42, 98, .10); backdrop-filter: blur(18px); }
+.grid-glow { background-image: linear-gradient(rgba(105,86,232,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(105,86,232,.055) 1px,transparent 1px); background-size: 34px 34px; }
+.soft-card { box-shadow: 0 16px 40px rgba(55, 45, 115, .08); }
+
+@keyframes float { 50% { transform: translateY(-12px); } }
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+@keyframes pulse-dot { 50% { opacity: .3; transform: scale(.72); } }
+@keyframes report-bar { from { width: 0; } to { width: 96%; } }
+@keyframes order-pop { 0% { opacity: 0; transform: translateY(12px) scale(.94); } 60% { transform: translateY(-2px) scale(1.02); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes check-pop { 0% { transform: scale(0) rotate(-20deg); } 70% { transform: scale(1.16) rotate(4deg); } 100% { transform: scale(1) rotate(0); } }
+.animate-float { animation: float 5s ease-in-out infinite; }
+.animate-shimmer { animation: shimmer 1.8s infinite; }
+.animate-pulse-dot { animation: pulse-dot 1.25s ease-in-out infinite; }
+.animate-report-bar { animation: report-bar 1.5s .35s both ease-out; }
+.order-success { animation: order-pop .42s both cubic-bezier(.2,.8,.2,1); }
+.order-check { animation: check-pop .6s .14s both cubic-bezier(.2,.8,.2,1); }
