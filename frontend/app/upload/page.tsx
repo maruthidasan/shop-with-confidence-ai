@@ -118,7 +118,7 @@ export default function UploadPage() {
               {occasions.map(item => (
                 <button key={item} type="button" onClick={() => setOccasion(item)}
                   className={`rounded-xl border px-3 py-3 text-sm ${occasion === item ? "border-violet-600 bg-violet-50 text-violet-800" : "border-slate-200 text-slate-600"}`}>
-                  {item}
+                  {item === "Date Night" ? "Special Occasion" : item}
                 </button>
               ))}
             </div>

@@ -3,7 +3,7 @@ import Link from "next/link";
 const collectionImages = [
   "/products/08_Cashmere_Wrap_Coat_Women.jpg",
   "/products/01_Navy_Sculpted_Blazer_Men.jpg",
-  "/products/04_Silk_Column_Dress_Women.jpg",
+  "/products/06_Rib_Knit_Dress_Women.jpg",
   "/images/accessories-editorial.png",
   "/products/08_Cashmere_Wrap_Coat_Women.jpg",
 ];
